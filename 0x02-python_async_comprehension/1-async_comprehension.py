@@ -1,11 +1,19 @@
 #!/usr/bin/env python3
-"""async_comprehension"""
+"""
+Async Comprehensions
+Write coroutine async_comprehension, takes no arguments
+Return 10 random numbers collected using async comprehensions
+"""
 from typing import List
-result = List[float]
+Vector = List[float]
 
 async_generator = __import__('0-async_generator').async_generator
 
-async def async_comprehension()-> result:
-    """async_comprehension coroutine"""
-    stop = [x async for x in async_generator()]
+
+async def async_comprehension() -> Vector:
+    """
+    Coroutine async_comprehension
+    yield random numbers collected
+    """
+    stop = [y async for y in async_generator()]
     return stop

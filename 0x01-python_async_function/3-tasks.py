@@ -1,11 +1,19 @@
 #!/usr/bin/env python3
-"""async function with annotation"""
+"""
+Tasks
+Write function task_wait_random, takes integer argument max_delay
+Returns a asyncio.Task
+"""
 import asyncio
 
 wait_random = __import__('0-basic_async_syntax').wait_random
 
-def task_wait_random(max_delay : int) -> asyncio.Task:
-    """task that waits for a random number of seconds
-       between 0 and max_delay"""
-    task = asyncio.create_task(wait_random(max_delay))
-    return task
+
+def task_wait_random(max_delay: int) -> asyncio.Task:
+    """
+    Function task_wait_random
+    takes int argument max_delay
+    Returns a async.Task
+    """
+    stop = asyncio.create_task(wait_random(max_delay))
+    return stop

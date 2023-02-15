@@ -1,18 +1,19 @@
 #!/usr/bin/env python3
-"""execute multiple coroutines at the same time with async"""
+"""
+Tasks
+Alter a code into a new function task_wait_n
+"""
 import asyncio
-task_wait_random = __import__('3-tasks').task_wait_random
+from typing import List
 
-async def task_wait_n(n: int, max_delay : int = 10) -> list[float]:
-    """ Async function that calls task_wait_random n number of times"""
-    delay_list: list=[]
-    for i in range(n):
-        delay = task_wait_random(max_delay)
-        delay_list.append(delay)
-    result_list: list=[]
-    for i in asyncio.as_completed(delay_list):
-        result: float = await i
-        result_list.append(result)
-    return result_list 
+get = __import__('3-tasks').task_wait_random
 
-# print(asyncio.run(task_wait_n(5,6)))
+
+async def task_wait_n(n: int, max_delay: int) -> List[float]:
+    """
+    Function task_wait_n
+    Alter code
+    """
+    ls = [get(max_delay) for i in range(n)]
+    stop = [await task for task in asyncio.as_completed(ls)]
+    return stop
